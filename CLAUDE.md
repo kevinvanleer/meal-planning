@@ -71,7 +71,7 @@
 | Sat Feb 14     | Crockpot Italian Sausage & Peppers over Rice       |
 | Sun Feb 15     | GF Fettuccine Alfredo with Garlic Butter Broccoli  |
 
-## Website (kevinvanleer.com/meals)
+## Website (kevinvanleer.com/meal-planning)
 
 - **Stack**: JSON data + Mustache templates + gh-pages deployment
 - **Directory**: `www/` contains the static site source
