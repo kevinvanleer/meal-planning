@@ -1,0 +1,19 @@
+{
+  "name": "meal-planning-www",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Weekly meal plans published to kevinvanleer.com/meals",
+  "homepage": "https://kevinvanleer.github.io/meals",
+  "scripts": {
+    "validate": "node scripts/build.js --validate-only",
+    "build": "node scripts/build.js",
+    "generate": "node scripts/generate-json.js",
+    "deploy": "npm run build && gh-pages -d dist"
+  },
+  "dependencies": {
+    "ajv": "^8.17.0",
+    "ajv-formats": "^3.0.0",
+    "gh-pages": "^6.3.0",
+    "mustache": "^4.2.0"
+  }
+}

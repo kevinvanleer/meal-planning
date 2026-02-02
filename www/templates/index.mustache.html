@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Meal Plans — Van Leer Family</title>
+  <link rel="stylesheet" href="assets/css/main.css">
+</head>
+<body>
+  <header>
+    <h1>Meal Plans</h1>
+    <p class="subtitle">Van Leer Family Weekly Dinners</p>
+  </header>
+  <main>
+    <ul class="week-list">
+      {{#weeks}}
+      <li>
+        <a href="week/{{startDate}}/">
+          <span class="date-range">{{dateRange}}</span>
+          <span class="arrow">&rarr;</span>
+        </a>
+      </li>
+      {{/weeks}}
+    </ul>
+  </main>
+  <footer>
+    <p>Gluten-free family meals &middot; Scaled for 3</p>
+  </footer>
+</body>
+</html>

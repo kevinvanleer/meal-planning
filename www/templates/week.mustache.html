@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{{dateRange}} — Meal Plan</title>
+  <link rel="stylesheet" href="../../assets/css/main.css">
+</head>
+<body>
+  <header>
+    <a href="../../" class="back-link">&larr; All Weeks</a>
+    <h1>{{dateRange}}</h1>
+  </header>
+  <main>
+    <div class="tabs">
+      <input type="radio" name="tab" id="tab-meals" checked>
+      <input type="radio" name="tab" id="tab-recipes">
+      <input type="radio" name="tab" id="tab-grocery">
+
+      <nav class="tab-labels">
+        <label for="tab-meals">Meals</label>
+        <label for="tab-recipes">Recipes</label>
+        <label for="tab-grocery">Grocery List</label>
+      </nav>
+
+      <section class="tab-panel" id="panel-meals">
+        <table class="meal-table">
+          <thead>
+            <tr>
+              <th>Day</th>
+              <th>Meal</th>
+              <th>Style</th>
+            </tr>
+          </thead>
+          <tbody>
+            {{#meals}}
+            <tr>
+              <td>{{day}}</td>
+              <td>{{meal}}</td>
+              <td>{{style}}</td>
+            </tr>
+            {{/meals}}
+          </tbody>
+        </table>
+      </section>
+
+      <section class="tab-panel" id="panel-recipes">
+        {{#recipes}}
+        <article class="recipe">
+          <h3>{{day}} — {{name}}</h3>
+          <ul>
+            {{#ingredients}}
+            <li>{{.}}</li>
+            {{/ingredients}}
+          </ul>
+          <p class="instructions">{{instructions}}</p>
+        </article>
+        {{/recipes}}
+      </section>
+
+      <section class="tab-panel" id="panel-grocery">
+        {{#groceryCategories}}
+        <h3>{{category}}</h3>
+        <ul>
+          {{#items}}
+          <li>{{item}}{{#days}} — <span class="days">{{days}}</span>{{/days}}</li>
+          {{/items}}
+        </ul>
+        {{/groceryCategories}}
+      </section>
+    </div>
+  </main>
+  <footer>
+    <p>Gluten-free family meals &middot; Scaled for 3</p>
+  </footer>
+  <script src="../../assets/js/tabs.js"></script>
+</body>
+</html>
