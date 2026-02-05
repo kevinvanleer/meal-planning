@@ -63,7 +63,7 @@
         <h3>{{category}}</h3>
         <ul>
           {{#items}}
-          <li>{{item}}{{#days}} — <span class="days">{{days}}</span>{{/days}}</li>
+          <li><button class="copy-btn" data-item="{{item}}" aria-label="Copy {{item}}">&#x1F4CB;</button>{{item}}{{#days}} — <span class="days">{{days}}</span>{{/days}}</li>
           {{/items}}
         </ul>
         {{/groceryCategories}}
