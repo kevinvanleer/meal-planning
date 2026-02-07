@@ -106,6 +106,7 @@ fs.rmSync(DIST_DIR, { recursive: true, force: true });
 fs.mkdirSync(DIST_DIR, { recursive: true });
 
 const indexTemplate = fs.readFileSync(path.join(TEMPLATES_DIR, 'index.mustache.html'), 'utf8');
+const archiveTemplate = fs.readFileSync(path.join(TEMPLATES_DIR, 'archive.mustache.html'), 'utf8');
 const weekTemplate = fs.readFileSync(path.join(TEMPLATES_DIR, 'week.mustache.html'), 'utf8');
 
 const weeks = getWeeks.all();
@@ -170,10 +171,18 @@ for (const week of weeks) {
   console.log(`Built dist/week/${week.week_start}/index.html`);
 }
 
-// Build index page
-const indexHtml = Mustache.render(indexTemplate, { weeks: weeksData });
+// Build index page (redirect to current week)
+const weeksJson = JSON.stringify(weeksData.map(w => w.startDate));
+const indexHtml = Mustache.render(indexTemplate, { weeks: weeksData, weeksJson });
 fs.writeFileSync(path.join(DIST_DIR, 'index.html'), indexHtml);
 console.log('Built dist/index.html');
+
+// Build archive page
+const archiveDir = path.join(DIST_DIR, 'archive');
+fs.mkdirSync(archiveDir, { recursive: true });
+const archiveHtml = Mustache.render(archiveTemplate, { weeks: weeksData });
+fs.writeFileSync(path.join(archiveDir, 'index.html'), archiveHtml);
+console.log('Built dist/archive/index.html');
 
 // Copy assets
 copyDirSync(ASSETS_DIR, path.join(DIST_DIR, 'assets'));

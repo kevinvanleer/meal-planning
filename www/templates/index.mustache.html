@@ -5,26 +5,31 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Meal Plans — Van Leer Family</title>
   <link rel="stylesheet" href="assets/css/main.css">
+  <script>
+    (function() {
+      var weeks = {{{weeksJson}}};
+      var today = new Date();
+      var day = today.getDay();
+      var diff = today.getDate() - day + (day === 0 ? -6 : 1);
+      var monday = new Date(today.setDate(diff));
+      var weekStart = monday.toISOString().split('T')[0];
+
+      var targetWeek = weeks.find(function(w) { return w === weekStart; });
+      if (targetWeek) {
+        window.location.replace('week/' + targetWeek + '/#meals');
+      } else {
+        window.location.replace('archive/');
+      }
+    })();
+  </script>
 </head>
 <body>
   <header>
     <h1>Meal Plans</h1>
-    <p class="subtitle">Van Leer Family Weekly Dinners</p>
+    <p class="subtitle">Redirecting to current week...</p>
   </header>
   <main>
-    <ul class="week-list">
-      {{#weeks}}
-      <li>
-        <a href="week/{{startDate}}/">
-          <span class="date-range">{{dateRange}}</span>
-          <span class="arrow">&rarr;</span>
-        </a>
-      </li>
-      {{/weeks}}
-    </ul>
+    <p>If you are not redirected, <a href="archive/">view all weeks</a>.</p>
   </main>
-  <footer>
-    <p>Gluten-free family meals &middot; Scaled for 3</p>
-  </footer>
 </body>
 </html>
