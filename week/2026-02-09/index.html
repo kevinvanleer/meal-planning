@@ -16,6 +16,7 @@
       <input type="radio" name="tab" id="tab-meals" checked>
       <input type="radio" name="tab" id="tab-recipes">
       <input type="radio" name="tab" id="tab-grocery">
+      <input type="radio" name="tab" id="tab-recipe-detail">
 
       <nav class="tab-labels">
         <label for="tab-meals">Meals</label>
@@ -33,37 +34,37 @@
             </tr>
           </thead>
           <tbody>
-            <tr>
+            <tr data-day="Monday" class="meal-row">
               <td>Monday</td>
               <td>Steak Fajita Rice Bowls</td>
               <td>Rice bowl &#x2F; Mexican</td>
             </tr>
-            <tr>
+            <tr data-day="Tuesday" class="meal-row">
               <td>Tuesday</td>
               <td>Crockpot Beef Stew (GF)</td>
               <td>Crockpot</td>
             </tr>
-            <tr>
+            <tr data-day="Wednesday" class="meal-row">
               <td>Wednesday</td>
               <td>Marinated Pork Tenderloin with Roasted Sweet Potato</td>
               <td>Grilled</td>
             </tr>
-            <tr>
+            <tr data-day="Thursday" class="meal-row">
               <td>Thursday</td>
               <td>Lemon Herb Chicken with Roasted Asparagus</td>
               <td>Pan sear</td>
             </tr>
-            <tr>
+            <tr data-day="Friday" class="meal-row">
               <td>Friday</td>
               <td>Shrimp Tacos (corn tortillas)</td>
               <td>Mexican</td>
             </tr>
-            <tr>
+            <tr data-day="Saturday" class="meal-row">
               <td>Saturday</td>
               <td>Crockpot Italian Sausage &amp; Peppers over Rice</td>
               <td>Crockpot</td>
             </tr>
-            <tr>
+            <tr data-day="Sunday" class="meal-row">
               <td>Sunday</td>
               <td>GF Fettuccine Alfredo with Garlic Butter Broccoli</td>
               <td>Pasta</td>
@@ -73,7 +74,7 @@
       </section>
 
       <section class="tab-panel" id="panel-recipes">
-        <article class="recipe">
+        <article class="recipe" id="recipe-Monday">
           <h3>Monday — Steak Fajita Rice Bowls</h3>
           <ul>
             <li>¾ lb flank or skirt steak, sliced thin</li>
@@ -84,7 +85,7 @@
           </ul>
           <p class="instructions">Sear steak strips 2–3 min over high heat, remove. Sauté peppers and onions 5 min. Serve over rice with toppings.</p>
         </article>
-        <article class="recipe">
+        <article class="recipe" id="recipe-Tuesday">
           <h3>Tuesday — Crockpot Beef Stew (GF)</h3>
           <ul>
             <li>1 lb beef stew meat, cubed</li>
@@ -94,7 +95,7 @@
           </ul>
           <p class="instructions">Brown beef in skillet 3 min. Add everything to slow cooker. Cook LOW 8 hrs. Stir in cornstarch slurry, cook 10 min more.</p>
         </article>
-        <article class="recipe">
+        <article class="recipe" id="recipe-Wednesday">
           <h3>Wednesday — Marinated Pork Tenderloin with Roasted Sweet Potato</h3>
           <ul>
             <li>1 lb pork tenderloin</li>
@@ -103,7 +104,7 @@
           </ul>
           <p class="instructions">Marinate 1–8 hrs. Grill or sauté to 145°F (~15 min). Rest 5 min. Roast sweet potatoes at 400°F for 25 min.</p>
         </article>
-        <article class="recipe">
+        <article class="recipe" id="recipe-Thursday">
           <h3>Thursday — Lemon Herb Chicken with Roasted Asparagus</h3>
           <ul>
             <li>3 boneless skinless chicken thighs (~1 lb)</li>
@@ -112,7 +113,7 @@
           </ul>
           <p class="instructions">Marinate chicken 30 min. Sear in skillet 5–6 min per side. Roast asparagus at 400°F for 12 min.</p>
         </article>
-        <article class="recipe">
+        <article class="recipe" id="recipe-Friday">
           <h3>Friday — Shrimp Tacos (corn tortillas)</h3>
           <ul>
             <li>¾ lb shrimp, peeled and deveined</li>
@@ -123,7 +124,7 @@
           </ul>
           <p class="instructions">Sauté shrimp 2–3 min per side. Mix slaw. Serve in warmed corn tortillas with slaw and toppings.</p>
         </article>
-        <article class="recipe">
+        <article class="recipe" id="recipe-Saturday">
           <h3>Saturday — Crockpot Italian Sausage &amp; Peppers over Rice</h3>
           <ul>
             <li>1 lb Italian sausage links (GF — check label)</li>
@@ -133,7 +134,7 @@
           </ul>
           <p class="instructions">Place sausage, peppers, onions, tomatoes, and seasoning in slow cooker. Cook LOW 6 hrs. Slice sausage. Serve over rice.</p>
         </article>
-        <article class="recipe">
+        <article class="recipe" id="recipe-Sunday">
           <h3>Sunday — GF Fettuccine Alfredo with Garlic Butter Broccoli</h3>
           <ul>
             <li>9 oz GF fettuccine</li>
@@ -203,6 +204,11 @@
         <ul>
           <li><button class="copy-btn" data-item="Hot sauce" aria-label="Copy Hot sauce">&#x1F4CB;</button>Hot sauce — <span class="days">Friday</span></li>
         </ul>
+      </section>
+
+      <section class="tab-panel" id="panel-recipe-detail">
+        <button class="back-to-meals" id="back-to-meals">&larr; Back to Meals</button>
+        <div id="recipe-detail-content"></div>
       </section>
     </div>
   </main>

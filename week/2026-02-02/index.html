@@ -16,6 +16,7 @@
       <input type="radio" name="tab" id="tab-meals" checked>
       <input type="radio" name="tab" id="tab-recipes">
       <input type="radio" name="tab" id="tab-grocery">
+      <input type="radio" name="tab" id="tab-recipe-detail">
 
       <nav class="tab-labels">
         <label for="tab-meals">Meals</label>
@@ -33,37 +34,37 @@
             </tr>
           </thead>
           <tbody>
-            <tr>
+            <tr data-day="Monday" class="meal-row">
               <td>Monday</td>
               <td>Crockpot Crack Chicken over Rice</td>
               <td>Crockpot</td>
             </tr>
-            <tr>
+            <tr data-day="Tuesday" class="meal-row">
               <td>Tuesday</td>
               <td>Chicken Burrito Bowls</td>
               <td>Rice bowl &#x2F; Mexican</td>
             </tr>
-            <tr>
+            <tr data-day="Wednesday" class="meal-row">
               <td>Wednesday</td>
               <td>GF Fettuccine Alfredo with Garlic Butter Broccoli</td>
               <td>Pasta</td>
             </tr>
-            <tr>
+            <tr data-day="Thursday" class="meal-row">
               <td>Thursday</td>
               <td>Honey Garlic Salmon with Steamed Green Beans</td>
               <td>Pan sear</td>
             </tr>
-            <tr>
+            <tr data-day="Friday" class="meal-row">
               <td>Friday</td>
               <td>Crockpot Chicken Tortilla Soup (corn chips)</td>
               <td>Crockpot &#x2F; Mexican</td>
             </tr>
-            <tr>
+            <tr data-day="Saturday" class="meal-row">
               <td>Saturday</td>
               <td>Crockpot Salsa Verde Chicken Tacos (corn tortillas)</td>
               <td>Crockpot &#x2F; Mexican</td>
             </tr>
-            <tr>
+            <tr data-day="Sunday" class="meal-row">
               <td>Sunday</td>
               <td>Teriyaki Chicken Rice Bowls</td>
               <td>Rice bowl</td>
@@ -73,7 +74,7 @@
       </section>
 
       <section class="tab-panel" id="panel-recipes">
-        <article class="recipe">
+        <article class="recipe" id="recipe-Monday">
           <h3>Monday — Crockpot Crack Chicken over Rice</h3>
           <ul>
             <li>1 lb boneless skinless chicken thighs</li>
@@ -86,7 +87,7 @@
           </ul>
           <p class="instructions">Slow cooker LOW 7 hrs. Shred, stir, top with cheddar, melt 10 min. Serve over rice.</p>
         </article>
-        <article class="recipe">
+        <article class="recipe" id="recipe-Tuesday">
           <h3>Tuesday — Chicken Burrito Bowls</h3>
           <ul>
             <li>1 lb chicken breast, diced</li>
@@ -99,7 +100,7 @@
           </ul>
           <p class="instructions">Season and sauté chicken 6–7 min. Serve over rice with beans, corn, and toppings.</p>
         </article>
-        <article class="recipe">
+        <article class="recipe" id="recipe-Wednesday">
           <h3>Wednesday — GF Fettuccine Alfredo with Broccoli</h3>
           <ul>
             <li>9 oz GF fettuccine</li>
@@ -109,7 +110,7 @@
           </ul>
           <p class="instructions">Melt butter, sauté garlic 30 sec, add cream, simmer 3 min. Stir in Parmesan until smooth. Toss with cooked GF pasta. Steam or roast broccoli on the side.</p>
         </article>
-        <article class="recipe">
+        <article class="recipe" id="recipe-Thursday">
           <h3>Thursday — Honey Garlic Salmon with Steamed Green Beans</h3>
           <ul>
             <li>3 salmon fillets (~5 oz each)</li>
@@ -118,7 +119,7 @@
           </ul>
           <p class="instructions">Sear salmon skin-side up 3 min, flip, add honey-garlic-tamari sauce, cook 3 more min basting. Steam green beans on the side.</p>
         </article>
-        <article class="recipe">
+        <article class="recipe" id="recipe-Friday">
           <h3>Friday — Crockpot Chicken Tortilla Soup</h3>
           <ul>
             <li>1 lb chicken breast</li>
@@ -128,7 +129,7 @@
           </ul>
           <p class="instructions">Place chicken, tomatoes, beans, corn, broth, and spices in slow cooker. Cook LOW 6–8 hrs. Shred chicken, stir. Serve with toppings.</p>
         </article>
-        <article class="recipe">
+        <article class="recipe" id="recipe-Saturday">
           <h3>Saturday — Crockpot Salsa Verde Chicken Tacos</h3>
           <ul>
             <li>1 lb boneless skinless chicken breast</li>
@@ -139,7 +140,7 @@
           </ul>
           <p class="instructions">Place chicken in slow cooker, pour salsa verde, season. Cook LOW 6 hrs. Shred and serve in corn tortillas.</p>
         </article>
-        <article class="recipe">
+        <article class="recipe" id="recipe-Sunday">
           <h3>Sunday — Teriyaki Chicken Rice Bowls</h3>
           <ul>
             <li>1 lb chicken thighs, sliced</li>
@@ -208,6 +209,11 @@
         <ul>
           <li><button class="copy-btn" data-item="Sesame seeds" aria-label="Copy Sesame seeds">&#x1F4CB;</button>Sesame seeds — <span class="days">Sunday</span></li>
         </ul>
+      </section>
+
+      <section class="tab-panel" id="panel-recipe-detail">
+        <button class="back-to-meals" id="back-to-meals">&larr; Back to Meals</button>
+        <div id="recipe-detail-content"></div>
       </section>
     </div>
   </main>
