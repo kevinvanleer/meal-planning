@@ -41,37 +41,77 @@
       "day": "Monday",
       "name": "Steak Fajita Rice Bowls",
       "ingredients": [
-        "¾ lb flank or skirt steak, sliced thin",
-        "1 bell pepper, sliced; ½ onion, sliced",
-        "1 Tbsp olive oil, 1 tsp cumin, 1 tsp chili powder, ½ tsp garlic powder, salt & pepper",
+        "3/4 lb flank or skirt steak, sliced thin",
+        "1 bell pepper, sliced; 1/2 onion, sliced",
+        "1 Tbsp olive oil, 1 tsp cumin, 1 tsp chili powder, 1/2 tsp garlic powder, salt & pepper",
         "1 cup rice",
         "Toppings: shredded cheese, sour cream, salsa, avocado, lime"
       ],
-      "instructions": "Sear steak strips 2–3 min over high heat, remove. Sauté peppers and onions 5 min. Serve over rice with toppings."
+      "instructions": "Sear steak strips 2-3 min over high heat, remove. Saute peppers and onions 5 min. Serve over rice with toppings.",
+      "prepSteps": [
+        "Start rice: Begin cooking rice according to package directions (about 20 min).",
+        "Prep steak: Slice steak against the grain into thin strips. Season with cumin, chili powder, garlic powder, salt, and pepper.",
+        "Prep veggies: Slice bell pepper into strips. Slice onion into half-moons.",
+        "Sear steak: Heat a large skillet or cast iron over high heat until smoking. Add a little oil, then steak strips. Sear 2-3 minutes, stirring once. Don't overcrowd — cook in batches if needed. Remove to a plate.",
+        "Cook veggies: In the same pan, add peppers and onions. Cook 5 minutes until slightly charred and tender-crisp.",
+        "Combine: Add steak back to pan with veggies. Toss briefly to combine.",
+        "Assemble bowls: Divide rice among bowls. Top with fajita steak and veggies, cheese, sour cream, salsa, avocado, and a squeeze of lime."
+      ],
+      "tips": [
+        "Slice steak against the grain for tender bites",
+        "Get the pan very hot before adding steak — you want a sear, not steam",
+        "Let steak rest 5 minutes before slicing if cooking whole first"
+      ]
     },
     {
       "day": "Tuesday",
       "name": "Chicken Burrito Bowls",
       "ingredients": [
         "1 lb chicken breast, diced",
-        "1 Tbsp olive oil, 1 tsp cumin, 1 tsp chili powder, ½ tsp garlic powder, salt & pepper",
+        "1 Tbsp olive oil, 1 tsp cumin, 1 tsp chili powder, 1/2 tsp garlic powder, salt & pepper",
         "1 cup rice",
         "1 can (15 oz) black beans, drained",
-        "½ cup corn (frozen or canned)",
-        "½ cup salsa, ¼ cup sour cream",
+        "1/2 cup corn (frozen or canned)",
+        "1/2 cup salsa, 1/4 cup sour cream",
         "Toppings: shredded cheese, avocado, cilantro"
       ],
-      "instructions": "Season and sauté chicken 6–7 min. Serve over rice with beans, corn, and toppings."
+      "instructions": "Season and saute chicken 6-7 min. Serve over rice with beans, corn, and toppings.",
+      "prepSteps": [
+        "Start rice: Begin cooking rice according to package directions (about 20 min).",
+        "Prep chicken: Dice chicken breast into bite-sized cubes. Season with cumin, chili powder, garlic powder, salt, and pepper.",
+        "Cook chicken: Heat olive oil in a large skillet over medium-high heat. Add chicken and cook 6-7 minutes, stirring occasionally, until cooked through and slightly charred.",
+        "Prep toppings: While chicken cooks, drain and rinse black beans, warm corn, dice avocado, chop cilantro.",
+        "Assemble bowls: Divide rice among bowls. Top with chicken, black beans, corn, salsa, sour cream, cheese, avocado, and cilantro."
+      ],
+      "tips": [
+        "Cut chicken into even-sized pieces for consistent cooking",
+        "For extra flavor, cook black beans with a little cumin",
+        "Add a squeeze of lime juice for brightness"
+      ]
     },
     {
       "day": "Wednesday",
       "name": "Marinated Pork Tenderloin with Roasted Sweet Potato",
       "ingredients": [
         "1 lb pork tenderloin",
-        "Marinade: 3 Tbsp olive oil, 1 Tbsp brown sugar, 1 tsp Dijon, 1 Tbsp tamari, ½ tsp lemon zest, 1 tsp each parsley & thyme, ½ tsp garlic, salt & pepper",
+        "Marinade: 3 Tbsp olive oil, 1 Tbsp brown sugar, 1 tsp Dijon, 1 Tbsp tamari, 1/2 tsp lemon zest, 1 tsp each parsley & thyme, 1/2 tsp garlic, salt & pepper",
         "2 medium sweet potatoes, cubed, tossed with olive oil, salt, pepper"
       ],
-      "instructions": "Marinate 1–8 hrs. Grill or sauté to 145°F (~15 min). Rest 5 min. Roast sweet potatoes at 400°F for 25 min."
+      "instructions": "Marinate 1-8 hrs. Grill or saute to 145F (~15 min). Rest 5 min. Roast sweet potatoes at 400F for 25 min.",
+      "prepSteps": [
+        "Make marinade: Whisk together olive oil, brown sugar, Dijon, tamari, lemon zest, parsley, thyme, minced garlic, salt, and pepper.",
+        "Marinate pork: Place tenderloin in a bag or dish. Pour marinade over. Refrigerate 1-8 hours (longer = more flavor).",
+        "Prep sweet potatoes: Peel and cube sweet potatoes into 1-inch pieces. Toss with olive oil, salt, and pepper.",
+        "Roast potatoes: Spread on a baking sheet. Roast at 400F for 25-30 minutes, flipping halfway, until golden and tender.",
+        "Cook pork: Remove pork from marinade. Grill over medium-high heat or pan-sear, turning occasionally, until internal temp reaches 145F (about 15-20 minutes total).",
+        "Rest and slice: Let pork rest 5 minutes. Slice into medallions.",
+        "Serve: Plate sliced pork with roasted sweet potatoes."
+      ],
+      "tips": [
+        "Don't skip the rest — it keeps the pork juicy",
+        "Use a meat thermometer for perfect doneness (145F)",
+        "Marinade works great on chicken too"
+      ]
     },
     {
       "day": "Thursday",
@@ -81,7 +121,20 @@
         "2 Tbsp olive oil, juice of 1 lemon, 1 tsp dried oregano, 1 tsp garlic powder, salt & pepper",
         "1 bunch asparagus, trimmed, tossed with olive oil, salt, pepper"
       ],
-      "instructions": "Marinate chicken 30 min. Sear in skillet 5–6 min per side. Roast asparagus at 400°F for 12 min."
+      "instructions": "Marinate chicken 30 min. Sear in skillet 5-6 min per side. Roast asparagus at 400F for 12 min.",
+      "prepSteps": [
+        "Marinate chicken: Mix olive oil, lemon juice, oregano, garlic powder, salt, and pepper. Coat chicken thighs and let sit 30 minutes (or up to 4 hours in fridge).",
+        "Prep asparagus: Trim woody ends from asparagus. Toss with olive oil, salt, and pepper. Spread on a baking sheet.",
+        "Roast asparagus: Roast at 400F for 10-12 minutes until tender with slightly crispy tips.",
+        "Sear chicken: Heat a skillet over medium-high heat. Add a little oil. Cook chicken 5-6 minutes per side until golden brown and cooked through (internal temp 165F).",
+        "Rest: Let chicken rest 3-5 minutes before serving.",
+        "Serve: Plate chicken with roasted asparagus. Drizzle with any pan juices."
+      ],
+      "tips": [
+        "Pound chicken to even thickness for consistent cooking",
+        "Asparagus thickness varies — thin spears need less time",
+        "Add lemon zest to the marinade for extra brightness"
+      ]
     },
     {
       "day": "Friday",
@@ -92,18 +145,45 @@
         "1 cup rice",
         "1 cup steamed broccoli or snap peas"
       ],
-      "instructions": "Sauté chicken 6 min, add sauce, cook until thickened. Serve over rice with veggies. Top with sesame seeds and green onion."
+      "instructions": "Saute chicken 6 min, add sauce, cook until thickened. Serve over rice with veggies. Top with sesame seeds and green onion.",
+      "prepSteps": [
+        "Start rice: Cook rice according to package directions (about 20 min).",
+        "Make sauce: Whisk together tamari, honey, sesame oil, and rice vinegar. In a separate small bowl, mix cornstarch with water to make a slurry.",
+        "Prep chicken: Slice chicken thighs into thin strips.",
+        "Cook chicken: Heat a large skillet or wok over medium-high heat with a little oil. Add chicken strips, cook 5-6 minutes until browned and cooked through.",
+        "Add sauce: Pour teriyaki sauce into pan. Add cornstarch slurry. Stir constantly until sauce thickens and coats the chicken, about 1-2 minutes.",
+        "Steam veggies: Steam broccoli or snap peas 4-5 minutes until tender-crisp.",
+        "Assemble bowls: Divide rice among bowls. Top with teriyaki chicken and steamed veggies. Garnish with sesame seeds and sliced green onions."
+      ],
+      "tips": [
+        "Slice chicken while partially frozen for easier thin cuts",
+        "Make cornstarch slurry right before using — it settles quickly",
+        "For crispier chicken, cook in batches and don't crowd the pan"
+      ]
     },
     {
       "day": "Saturday",
       "name": "Crockpot Italian Sausage & Peppers over Rice",
       "ingredients": [
         "1 lb Italian sausage links (GF — check label)",
-        "2 bell peppers, sliced; ½ onion, sliced",
-        "1 can (14 oz) diced tomatoes, 1 tsp Italian seasoning, ½ tsp garlic powder, salt & pepper",
+        "2 bell peppers, sliced; 1/2 onion, sliced",
+        "1 can (14 oz) diced tomatoes, 1 tsp Italian seasoning, 1/2 tsp garlic powder, salt & pepper",
         "1 cup rice"
       ],
-      "instructions": "Place sausage, peppers, onions, tomatoes, and seasoning in slow cooker. Cook LOW 6 hrs. Slice sausage. Serve over rice."
+      "instructions": "Place sausage, peppers, onions, tomatoes, and seasoning in slow cooker. Cook LOW 6 hrs. Slice sausage. Serve over rice.",
+      "prepSteps": [
+        "Morning (10 min): Place Italian sausage links in slow cooker. Add sliced bell peppers and onion on top.",
+        "Add sauce: Pour diced tomatoes (with juice) over everything. Sprinkle with Italian seasoning, garlic powder, salt, and pepper.",
+        "Cook: Cover and cook on LOW for 6 hours or HIGH for 3 hours.",
+        "Start rice: About 30 minutes before serving, cook rice according to package directions.",
+        "Slice sausage: Remove sausage links and slice into rounds. Return to slow cooker and stir with peppers and sauce.",
+        "Serve: Spoon sausage, peppers, and sauce over rice."
+      ],
+      "tips": [
+        "Brown sausage first for extra flavor (optional but worth it)",
+        "Use a mix of bell pepper colors for visual appeal",
+        "Great over pasta or crusty bread too"
+      ]
     },
     {
       "day": "Sunday",
@@ -111,16 +191,29 @@
       "ingredients": [
         "9 oz GF fettuccine",
         "2 Tbsp butter, 1 cup heavy cream, 1 clove garlic minced",
-        "¾ cup grated Parmesan, salt & pepper",
+        "3/4 cup grated Parmesan, salt & pepper",
         "2 cups broccoli florets"
       ],
-      "instructions": "Melt butter, sauté garlic 30 sec, add cream, simmer 3 min. Stir in Parmesan until smooth. Toss with cooked GF pasta. Steam or roast broccoli on the side."
+      "instructions": "Melt butter, saute garlic 30 sec, add cream, simmer 3 min. Stir in Parmesan until smooth. Toss with cooked GF pasta. Steam or roast broccoli on the side.",
+      "prepSteps": [
+        "Boil water: Bring a large pot of salted water to boil for pasta.",
+        "Prep broccoli: Cut broccoli into florets. Either steam (5 min) or roast at 425F with olive oil, salt, pepper (15 min).",
+        "Cook pasta: Add GF fettuccine to boiling water. Cook according to package directions. Reserve 1/2 cup pasta water before draining.",
+        "Make sauce: While pasta cooks, melt butter in a large pan over medium heat. Add minced garlic, saute 30 seconds until fragrant. Pour in heavy cream, bring to a gentle simmer for 3 minutes.",
+        "Finish sauce: Remove pan from heat. Stir in grated Parmesan until melted and smooth. Season with salt and pepper.",
+        "Combine: Toss drained pasta with sauce. Add splash of pasta water if too thick. Serve immediately with broccoli on the side."
+      ],
+      "tips": [
+        "Don't boil the cream — keep it at a gentle simmer to prevent separating",
+        "Freshly grated Parmesan melts better than pre-shredded",
+        "GF pasta can get gummy — don't overcook, taste test early"
+      ]
     }
   ],
   "groceryList": {
     "Proteins": [
       {
-        "item": "¾ lb flank or skirt steak",
+        "item": "3/4 lb flank or skirt steak",
         "days": "Monday"
       },
       {
@@ -162,7 +255,7 @@
         "days": "Sunday"
       },
       {
-        "item": "Grated Parmesan (¾ cup)",
+        "item": "Grated Parmesan (3/4 cup)",
         "days": "Sunday"
       }
     ],
@@ -226,7 +319,7 @@
         "days": "Tuesday"
       },
       {
-        "item": "½ cup corn (frozen or canned)",
+        "item": "1/2 cup corn (frozen or canned)",
         "days": "Tuesday"
       },
       {

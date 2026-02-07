@@ -55,6 +55,24 @@
             {{/ingredients}}
           </ul>
           <p class="instructions">{{instructions}}</p>
+          {{#prepSteps.length}}
+          <div class="prep-steps" hidden>
+            <ol>
+              {{#prepSteps}}
+              <li>{{.}}</li>
+              {{/prepSteps}}
+            </ol>
+          </div>
+          {{/prepSteps.length}}
+          {{#tips.length}}
+          <div class="tips" hidden>
+            <ul>
+              {{#tips}}
+              <li>{{.}}</li>
+              {{/tips}}
+            </ul>
+          </div>
+          {{/tips.length}}
         </article>
         {{/recipes}}
       </section>

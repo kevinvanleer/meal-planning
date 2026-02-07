@@ -26,7 +26,9 @@
           "day": { "type": "string" },
           "name": { "type": "string" },
           "ingredients": { "type": "array", "items": { "type": "string" } },
-          "instructions": { "type": "string" }
+          "instructions": { "type": "string" },
+          "prepSteps": { "type": "array", "items": { "type": "string" } },
+          "tips": { "type": "array", "items": { "type": "string" } }
         }
       }
     },
