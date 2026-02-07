@@ -1,49 +1,73 @@
 const fs = require('fs');
 const path = require('path');
 const Mustache = require('mustache');
-const Ajv = require('ajv');
+const Database = require('better-sqlite3');
 
 const ROOT = path.resolve(__dirname, '..');
-const CONTENT_DIR = path.join(ROOT, 'content');
+const DB_PATH = path.join(ROOT, 'meals.db');
 const TEMPLATES_DIR = path.join(ROOT, 'templates');
 const ASSETS_DIR = path.join(ROOT, 'assets');
 const DIST_DIR = path.join(ROOT, 'dist');
 
 const validateOnly = process.argv.includes('--validate-only');
 
-const schema = JSON.parse(fs.readFileSync(path.join(CONTENT_DIR, 'week.schema.json'), 'utf8'));
-const ajv = new Ajv({ allErrors: true });
-const validate = ajv.compile(schema);
-
-const weekFiles = fs.readdirSync(CONTENT_DIR)
-  .filter(f => f.endsWith('.json') && f !== 'week.schema.json')
-  .sort()
-  .reverse();
-
-const weeks = [];
-let hasErrors = false;
-
-for (const file of weekFiles) {
-  const data = JSON.parse(fs.readFileSync(path.join(CONTENT_DIR, file), 'utf8'));
-  const valid = validate(data);
-  if (!valid) {
-    console.error(`Validation failed for ${file}:`);
-    console.error(validate.errors);
-    hasErrors = true;
-  } else {
-    console.log(`Validated ${file}`);
-    weeks.push(data);
-  }
-}
-
-if (hasErrors) {
+// Open database
+if (!fs.existsSync(DB_PATH)) {
+  console.error('Database not found. Run: node scripts/migrate-from-json.js');
   process.exit(1);
 }
 
+const db = new Database(DB_PATH, { readonly: true });
+
+// Validate database has data
+const recipeCount = db.prepare('SELECT COUNT(*) as count FROM recipes').get().count;
+const mealCount = db.prepare('SELECT COUNT(*) as count FROM meals').get().count;
+
+if (recipeCount === 0 || mealCount === 0) {
+  console.error('Database is empty. Run migration first.');
+  process.exit(1);
+}
+
+console.log(`Database: ${recipeCount} recipes, ${mealCount} meals`);
+
 if (validateOnly) {
-  console.log('All files valid.');
+  console.log('Validation passed.');
+  db.close();
   process.exit(0);
 }
+
+// Get all weeks (grouped by week start date)
+const getWeeks = db.prepare(`
+  SELECT DISTINCT
+    date(date, 'weekday 0', '-6 days') as week_start,
+    date(date, 'weekday 0') as week_end
+  FROM meals
+  ORDER BY week_start DESC
+`);
+
+const getMealsForWeek = db.prepare(`
+  SELECT
+    m.date,
+    m.notes,
+    r.id as recipe_id,
+    r.name,
+    r.style,
+    r.ingredients,
+    r.instructions,
+    r.prep_steps,
+    r.tips
+  FROM meals m
+  JOIN recipes r ON m.recipe_id = r.id
+  WHERE date(m.date, 'weekday 0', '-6 days') = ?
+  ORDER BY m.date
+`);
+
+const getGroceryForWeek = db.prepare(`
+  SELECT category, item, days
+  FROM grocery_items
+  WHERE week_start = ?
+  ORDER BY category, id
+`);
 
 function formatDateRange(startDate, endDate) {
   const start = new Date(startDate + 'T00:00:00');
@@ -56,6 +80,12 @@ function formatDateRange(startDate, endDate) {
     return `${startMonth} ${start.getDate()}\u2013${end.getDate()}, ${year}`;
   }
   return `${startMonth} ${start.getDate()} \u2013 ${endMonth} ${end.getDate()}, ${year}`;
+}
+
+function getDayName(dateStr) {
+  const days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+  const d = new Date(dateStr + 'T00:00:00');
+  return days[d.getDay()];
 }
 
 function copyDirSync(src, dest) {
@@ -71,35 +101,83 @@ function copyDirSync(src, dest) {
   }
 }
 
+// Build
 fs.rmSync(DIST_DIR, { recursive: true, force: true });
 fs.mkdirSync(DIST_DIR, { recursive: true });
 
 const indexTemplate = fs.readFileSync(path.join(TEMPLATES_DIR, 'index.mustache.html'), 'utf8');
 const weekTemplate = fs.readFileSync(path.join(TEMPLATES_DIR, 'week.mustache.html'), 'utf8');
 
-const weeksWithDateRange = weeks.map(w => ({
-  ...w,
-  dateRange: formatDateRange(w.startDate, w.endDate),
-}));
+const weeks = getWeeks.all();
+const weeksData = [];
 
-const indexHtml = Mustache.render(indexTemplate, { weeks: weeksWithDateRange });
+for (const week of weeks) {
+  const meals = getMealsForWeek.all(week.week_start);
+  const groceryRows = getGroceryForWeek.all(week.week_start);
+
+  // Build meals array for template
+  const mealsForTemplate = meals.map(m => ({
+    day: getDayName(m.date),
+    meal: m.name,
+    style: m.style || ''
+  }));
+
+  // Build recipes array for template
+  const recipesForTemplate = meals.map(m => ({
+    day: getDayName(m.date),
+    name: m.name,
+    ingredients: JSON.parse(m.ingredients),
+    instructions: m.instructions,
+    prepSteps: m.prep_steps ? JSON.parse(m.prep_steps) : null,
+    tips: m.tips ? JSON.parse(m.tips) : null
+  }));
+
+  // Build grocery list grouped by category
+  const groceryByCategory = {};
+  for (const row of groceryRows) {
+    if (!groceryByCategory[row.category]) {
+      groceryByCategory[row.category] = [];
+    }
+    groceryByCategory[row.category].push({
+      item: row.item,
+      days: row.days
+    });
+  }
+
+  const groceryCategories = Object.entries(groceryByCategory).map(([category, items]) => ({
+    category,
+    items
+  }));
+
+  const dateRange = formatDateRange(week.week_start, week.week_end);
+
+  const weekData = {
+    startDate: week.week_start,
+    endDate: week.week_end,
+    dateRange,
+    meals: mealsForTemplate,
+    recipes: recipesForTemplate,
+    groceryCategories
+  };
+
+  weeksData.push(weekData);
+
+  // Build week page
+  const weekDir = path.join(DIST_DIR, 'week', week.week_start);
+  fs.mkdirSync(weekDir, { recursive: true });
+  const weekHtml = Mustache.render(weekTemplate, weekData);
+  fs.writeFileSync(path.join(weekDir, 'index.html'), weekHtml);
+  console.log(`Built dist/week/${week.week_start}/index.html`);
+}
+
+// Build index page
+const indexHtml = Mustache.render(indexTemplate, { weeks: weeksData });
 fs.writeFileSync(path.join(DIST_DIR, 'index.html'), indexHtml);
 console.log('Built dist/index.html');
 
-for (const week of weeksWithDateRange) {
-  const groceryCategories = Object.entries(week.groceryList).map(([category, items]) => ({
-    category,
-    items,
-  }));
-
-  const weekDir = path.join(DIST_DIR, 'week', week.startDate);
-  fs.mkdirSync(weekDir, { recursive: true });
-
-  const weekHtml = Mustache.render(weekTemplate, { ...week, groceryCategories });
-  fs.writeFileSync(path.join(weekDir, 'index.html'), weekHtml);
-  console.log(`Built dist/week/${week.startDate}/index.html`);
-}
-
+// Copy assets
 copyDirSync(ASSETS_DIR, path.join(DIST_DIR, 'assets'));
 console.log('Copied assets/');
+
+db.close();
 console.log('Build complete.');

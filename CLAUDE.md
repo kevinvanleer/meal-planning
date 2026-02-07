@@ -27,7 +27,6 @@
 
 - **Mom is gluten-free** — all planned meals must be gluten-free or include a gluten-free adaptation
 - **Crockpot/slow cooker** — preferred for busy days, dump-and-go meals
-- **Future consideration**: Migrate to SQLite DB when recipe collection and meal history grow large enough to benefit from structured queries (e.g., avoiding recent repeats, ingredient tracking)
 
 ## Favorite Recipes & Sources
 
@@ -48,20 +47,32 @@
 - **Grilled/marinated pork** — tenderloin, ham
 - **Crockpot crack chicken** — family favorite dump-and-go meal
 
-## Meal History
+## Database
 
-**Source of truth**: `www/content/YYYY-MM-DD.json` files
+**Source of truth**: `www/meals.db` (SQLite)
 
-To check previous meals before planning a new week, read the most recent JSON file in `www/content/`.
+### CLI Commands (from www/)
+```bash
+npm run meals recipes      # List all recipes
+npm run meals recipe <id>  # Show recipe details
+npm run meals meals        # List recent meals
+npm run meals unused 4     # Recipes not used in 4 weeks
+npm run meals stats        # Database statistics
+npm run meals help         # All commands
+```
+
+### Schema
+- **recipes**: id, name, style, ingredients (JSON), instructions, prep_steps, tips
+- **meals**: id, recipe_id, date, notes
+- **grocery_items**: id, week_start, category, item, days
 
 ## Website (kevinvanleer.com/meal-planning)
 
-- **Stack**: JSON data + Mustache templates + gh-pages deployment
+- **Stack**: SQLite → Mustache templates → GitHub Pages
 - **Directory**: `www/` contains the static site source
-- **Data format**: `www/content/*.json` validated against `www/content/week.schema.json`
-- **Workflow**: Edit/create `www/content/YYYY-MM-DD.json` → `npm run deploy` (in www/)
-- **Build**: `npm run build` validates JSON, compiles Mustache templates to `www/dist/`
-- **Deploy**: `npm run deploy` builds and pushes `dist/` to gh-pages branch
+- **Workflow**: Edit database → push to main → GitHub Actions deploys
+- **Build**: `npm run build` reads from `meals.db`, generates `dist/`
+- **Deploy**: Automatic on push to main (GitHub Actions)
 
 ## Saved Recipes
 

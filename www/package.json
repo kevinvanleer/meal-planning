@@ -6,11 +6,13 @@
   "homepage": "https://kevinvanleer.github.io/meal-planning",
   "scripts": {
     "validate": "node scripts/build.js --validate-only",
-    "build": "node scripts/build.js"
+    "build": "node scripts/build.js",
+    "meals": "node scripts/meals-cli.js"
   },
   "dependencies": {
     "ajv": "^8.17.0",
     "ajv-formats": "^3.0.0",
+    "better-sqlite3": "^12.6.2",
     "mustache": "^4.2.0"
   }
 }
