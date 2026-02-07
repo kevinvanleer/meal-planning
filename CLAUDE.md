@@ -56,9 +56,14 @@
 npm run meals recipes      # List all recipes
 npm run meals recipe <id>  # Show recipe details
 npm run meals meals        # List recent meals
+npm run meals week <date>  # Show week (use Monday date)
 npm run meals unused 4     # Recipes not used in 4 weeks
 npm run meals stats        # Database statistics
-npm run meals help         # All commands
+
+# Status tracking
+npm run meals skip <date>  # Mark meal as skipped (for carryover)
+npm run meals made <date>  # Mark meal as made
+npm run meals carryover    # Show skipped meals needing reschedule
 ```
 
 ### Schema

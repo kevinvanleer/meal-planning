@@ -18,10 +18,14 @@ Commands:
   meals [weeks]              List recent meals (default: 2 weeks)
   week <YYYY-MM-DD>          Show meals for a specific week (use Monday date)
   add-meal <date> <recipe>   Add a meal (date: YYYY-MM-DD, recipe: id or name)
-  add-recipe                 Add a new recipe (interactive)
   search <term>              Search recipes by name
   unused [weeks]             Show recipes not used in recent weeks
   stats                      Show database statistics
+
+Status tracking:
+  skip <date>                Mark a meal as skipped (to carry over)
+  made <date>                Mark a meal as made
+  carryover                  Show skipped meals that need to be rescheduled
 `);
   },
 
@@ -102,7 +106,7 @@ Commands:
 
   week: (weekStart) => {
     const meals = db.prepare(`
-      SELECT m.date, r.name, r.style, r.id as recipe_id
+      SELECT m.date, m.status, r.name, r.style, r.id as recipe_id
       FROM meals m
       JOIN recipes r ON m.recipe_id = r.id
       WHERE date(m.date, 'weekday 0', '-6 days') = ?
@@ -117,7 +121,8 @@ Commands:
     console.log(`\nWeek of ${weekStart}:\n`);
     for (const m of meals) {
       const day = getDayName(m.date);
-      console.log(`  ${day.padEnd(9)} ${m.name} (${m.style || 'N/A'})`);
+      const status = m.status === 'skipped' ? ' [SKIPPED]' : m.status === 'made' ? ' [made]' : '';
+      console.log(`  ${day.padEnd(9)} ${m.name}${status}`);
     }
   },
 
@@ -192,6 +197,7 @@ Commands:
     const weekCount = db.prepare(`
       SELECT COUNT(DISTINCT date(date, 'weekday 0', '-6 days')) as c FROM meals
     `).get().c;
+    const skippedCount = db.prepare("SELECT COUNT(*) as c FROM meals WHERE status = 'skipped'").get().c;
 
     const mostUsed = db.prepare(`
       SELECT r.name, COUNT(*) as times
@@ -207,10 +213,75 @@ Commands:
     console.log(`  Meals: ${mealCount}`);
     console.log(`  Weeks: ${weekCount}`);
     console.log(`  Grocery items: ${groceryCount}`);
+    console.log(`  Skipped (pending carryover): ${skippedCount}`);
     console.log('\nMost used recipes:');
     for (const r of mostUsed) {
       console.log(`  ${r.times}x ${r.name}`);
     }
+  },
+
+  skip: (date) => {
+    if (!date) {
+      console.log('Usage: skip <YYYY-MM-DD>');
+      return;
+    }
+    const meal = db.prepare(`
+      SELECT m.id, m.date, r.name FROM meals m
+      JOIN recipes r ON m.recipe_id = r.id
+      WHERE m.date = ?
+    `).get(date);
+
+    if (!meal) {
+      console.log(`No meal found for ${date}`);
+      return;
+    }
+
+    db.prepare("UPDATE meals SET status = 'skipped' WHERE id = ?").run(meal.id);
+    console.log(`Marked as skipped: ${meal.date} - ${meal.name}`);
+    console.log('Run "npm run meals carryover" to see meals needing rescheduling.');
+  },
+
+  made: (date) => {
+    if (!date) {
+      console.log('Usage: made <YYYY-MM-DD>');
+      return;
+    }
+    const meal = db.prepare(`
+      SELECT m.id, m.date, r.name FROM meals m
+      JOIN recipes r ON m.recipe_id = r.id
+      WHERE m.date = ?
+    `).get(date);
+
+    if (!meal) {
+      console.log(`No meal found for ${date}`);
+      return;
+    }
+
+    db.prepare("UPDATE meals SET status = 'made' WHERE id = ?").run(meal.id);
+    console.log(`Marked as made: ${meal.date} - ${meal.name}`);
+  },
+
+  carryover: () => {
+    const skipped = db.prepare(`
+      SELECT m.id, m.date, r.name, r.id as recipe_id
+      FROM meals m
+      JOIN recipes r ON m.recipe_id = r.id
+      WHERE m.status = 'skipped'
+      ORDER BY m.date
+    `).all();
+
+    if (skipped.length === 0) {
+      console.log('\nNo skipped meals to carry over.');
+      return;
+    }
+
+    console.log('\nSkipped meals (need rescheduling):\n');
+    for (const m of skipped) {
+      const day = getDayName(m.date);
+      console.log(`  ${m.date} (${day}) - ${m.name}`);
+    }
+    console.log(`\nTo reschedule: npm run meals add-meal <new-date> <recipe-id>`);
+    console.log('Then delete the old skipped entry or mark it as rescheduled.');
   }
 };
 
