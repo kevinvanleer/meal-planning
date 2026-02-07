@@ -16,6 +16,7 @@
       <input type="radio" name="tab" id="tab-meals" checked>
       <input type="radio" name="tab" id="tab-recipes">
       <input type="radio" name="tab" id="tab-grocery">
+      <input type="radio" name="tab" id="tab-recipe-detail">
 
       <nav class="tab-labels">
         <label for="tab-meals">Meals</label>
@@ -34,7 +35,7 @@
           </thead>
           <tbody>
             {{#meals}}
-            <tr>
+            <tr data-day="{{day}}" class="meal-row">
               <td>{{day}}</td>
               <td>{{meal}}</td>
               <td>{{style}}</td>
@@ -46,7 +47,7 @@
 
       <section class="tab-panel" id="panel-recipes">
         {{#recipes}}
-        <article class="recipe">
+        <article class="recipe" id="recipe-{{day}}">
           <h3>{{day}} — {{name}}</h3>
           <ul>
             {{#ingredients}}
@@ -67,6 +68,11 @@
           {{/items}}
         </ul>
         {{/groceryCategories}}
+      </section>
+
+      <section class="tab-panel" id="panel-recipe-detail">
+        <button class="back-to-meals" id="back-to-meals">&larr; Back to Meals</button>
+        <div id="recipe-detail-content"></div>
       </section>
     </div>
   </main>

@@ -121,7 +121,8 @@ header h1 {
 
 #tab-meals:checked ~ #panel-meals,
 #tab-recipes:checked ~ #panel-recipes,
-#tab-grocery:checked ~ #panel-grocery {
+#tab-grocery:checked ~ #panel-grocery,
+#tab-recipe-detail:checked ~ #panel-recipe-detail {
   display: block;
 }
 
@@ -156,6 +157,43 @@ header h1 {
   color: var(--color-text-muted);
   font-size: 0.85rem;
   white-space: nowrap;
+}
+
+.meal-row {
+  cursor: pointer;
+  transition: background-color 0.15s;
+}
+
+.meal-row:hover {
+  background-color: var(--color-accent-light);
+}
+
+.meal-row:active {
+  background-color: var(--color-border);
+}
+
+/* Recipe detail */
+#tab-recipe-detail:checked ~ .tab-labels {
+  display: none;
+}
+
+.back-to-meals {
+  background: none;
+  border: none;
+  color: var(--color-accent);
+  font-size: 0.9rem;
+  cursor: pointer;
+  padding: 0;
+  margin-bottom: 1rem;
+}
+
+.back-to-meals:hover {
+  text-decoration: underline;
+}
+
+#panel-recipe-detail .recipe {
+  border-bottom: none;
+  padding-bottom: 0;
 }
 
 /* Recipes */
