@@ -15,7 +15,7 @@ CREATE TABLE IF NOT EXISTS meals (
     recipe_id INTEGER NOT NULL REFERENCES recipes(id),
     date TEXT NOT NULL,         -- YYYY-MM-DD
     notes TEXT,
-    status TEXT DEFAULT 'planned',  -- planned, made, skipped
+    status TEXT DEFAULT 'planned' CHECK(status IN ('planned', 'made', 'deferred')),
     UNIQUE(date)                -- One meal per day
 );
 

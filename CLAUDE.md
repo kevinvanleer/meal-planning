@@ -61,9 +61,9 @@ npm run meals unused 4     # Recipes not used in 4 weeks
 npm run meals stats        # Database statistics
 
 # Status tracking
-npm run meals skip <date>  # Mark meal as skipped (for carryover)
+npm run meals defer <date> # Mark meal as deferred
 npm run meals made <date>  # Mark meal as made
-npm run meals carryover    # Show skipped meals needing reschedule
+npm run meals deferred     # Show deferred meals
 ```
 
 ### Schema

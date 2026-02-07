@@ -23,9 +23,9 @@ Commands:
   stats                      Show database statistics
 
 Status tracking:
-  skip <date>                Mark a meal as skipped (to carry over)
+  defer <date>               Mark a meal as deferred
   made <date>                Mark a meal as made
-  carryover                  Show skipped meals that need to be rescheduled
+  deferred                   Show deferred meals
 `);
   },
 
@@ -121,7 +121,7 @@ Status tracking:
     console.log(`\nWeek of ${weekStart}:\n`);
     for (const m of meals) {
       const day = getDayName(m.date);
-      const status = m.status === 'skipped' ? ' [SKIPPED]' : m.status === 'made' ? ' [made]' : '';
+      const status = m.status === 'deferred' ? ' [deferred]' : m.status === 'made' ? ' [made]' : '';
       console.log(`  ${day.padEnd(9)} ${m.name}${status}`);
     }
   },
@@ -177,7 +177,7 @@ Status tracking:
     const recipes = db.prepare(`
       SELECT r.id, r.name, MAX(m.date) as last_used
       FROM recipes r
-      LEFT JOIN meals m ON r.id = m.recipe_id AND m.status != 'skipped'
+      LEFT JOIN meals m ON r.id = m.recipe_id AND m.status != 'deferred'
       GROUP BY r.id
       HAVING last_used IS NULL OR last_used < ?
       ORDER BY last_used
@@ -198,13 +198,13 @@ Status tracking:
       SELECT COUNT(DISTINCT date(date, 'weekday 0', '-6 days')) as c FROM meals
     `).get().c;
     const madeCount = db.prepare("SELECT COUNT(*) as c FROM meals WHERE status = 'made'").get().c;
-    const skippedCount = db.prepare("SELECT COUNT(*) as c FROM meals WHERE status = 'skipped'").get().c;
+    const deferredCount = db.prepare("SELECT COUNT(*) as c FROM meals WHERE status = 'deferred'").get().c;
 
     const mostUsed = db.prepare(`
       SELECT r.name, COUNT(*) as times
       FROM meals m
       JOIN recipes r ON m.recipe_id = r.id
-      WHERE m.status != 'skipped'
+      WHERE m.status != 'deferred'
       GROUP BY r.id
       ORDER BY times DESC
       LIMIT 5
@@ -216,16 +216,16 @@ Status tracking:
     console.log(`  Weeks: ${weekCount}`);
     console.log(`  Grocery items: ${groceryCount}`);
     console.log(`  Made: ${madeCount}`);
-    console.log(`  Skipped (pending carryover): ${skippedCount}`);
+    console.log(`  Deferred: ${deferredCount}`);
     console.log('\nMost used recipes:');
     for (const r of mostUsed) {
       console.log(`  ${r.times}x ${r.name}`);
     }
   },
 
-  skip: (date) => {
+  defer: (date) => {
     if (!date) {
-      console.log('Usage: skip <YYYY-MM-DD>');
+      console.log('Usage: defer <YYYY-MM-DD>');
       return;
     }
     const meal = db.prepare(`
@@ -239,9 +239,8 @@ Status tracking:
       return;
     }
 
-    db.prepare("UPDATE meals SET status = 'skipped' WHERE id = ?").run(meal.id);
-    console.log(`Marked as skipped: ${meal.date} - ${meal.name}`);
-    console.log('Run "npm run meals carryover" to see meals needing rescheduling.');
+    db.prepare("UPDATE meals SET status = 'deferred' WHERE id = ?").run(meal.id);
+    console.log(`Marked as deferred: ${meal.date} - ${meal.name}`);
   },
 
   made: (date) => {
@@ -264,27 +263,25 @@ Status tracking:
     console.log(`Marked as made: ${meal.date} - ${meal.name}`);
   },
 
-  carryover: () => {
-    const skipped = db.prepare(`
+  deferred: () => {
+    const deferred = db.prepare(`
       SELECT m.id, m.date, r.name, r.id as recipe_id
       FROM meals m
       JOIN recipes r ON m.recipe_id = r.id
-      WHERE m.status = 'skipped'
+      WHERE m.status = 'deferred'
       ORDER BY m.date
     `).all();
 
-    if (skipped.length === 0) {
-      console.log('\nNo skipped meals to carry over.');
+    if (deferred.length === 0) {
+      console.log('\nNo deferred meals.');
       return;
     }
 
-    console.log('\nSkipped meals (need rescheduling):\n');
-    for (const m of skipped) {
+    console.log('\nDeferred meals:\n');
+    for (const m of deferred) {
       const day = getDayName(m.date);
       console.log(`  ${m.date} (${day}) - ${m.name}`);
     }
-    console.log(`\nTo reschedule: npm run meals add-meal <new-date> <recipe-id>`);
-    console.log('Then delete the old skipped entry or mark it as rescheduled.');
   }
 };
 
