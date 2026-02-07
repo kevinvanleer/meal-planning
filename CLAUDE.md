@@ -28,7 +28,6 @@
 - **Mom is gluten-free** — all planned meals must be gluten-free or include a gluten-free adaptation
 - **Crockpot/slow cooker** — preferred for busy days, dump-and-go meals
 - **Future consideration**: Migrate to SQLite DB when recipe collection and meal history grow large enough to benefit from structured queries (e.g., avoiding recent repeats, ingredient tracking)
-- **Output format**: Use `template.txt` for meal plan output format. Save each week to `weeks/YYYY-MM-DD.txt` (Monday date)
 
 ## Favorite Recipes & Sources
 
@@ -51,19 +50,16 @@
 
 ## Meal History
 
-**Source of truth**: `weeks/*.txt` files (human-readable) and `www/content/*.json` (generated)
+**Source of truth**: `www/content/YYYY-MM-DD.json` files
 
-To check previous meals before planning a new week:
-- Read the most recent `weeks/YYYY-MM-DD.txt` file
-- Or read `www/content/YYYY-MM-DD.json` after running `npm run generate`
+To check previous meals before planning a new week, read the most recent JSON file in `www/content/`.
 
 ## Website (kevinvanleer.com/meal-planning)
 
 - **Stack**: JSON data + Mustache templates + gh-pages deployment
 - **Directory**: `www/` contains the static site source
-- **Workflow**: Plan meals → `weeks/YYYY-MM-DD.txt` → `npm run generate` (in www/) → `npm run deploy`
-- **Data format**: `www/content/*.json` generated from `weeks/*.txt`, validated against `www/content/week.schema.json`
-- **Never edit JSON directly** — always edit `weeks/*.txt` then run `npm run generate`
+- **Data format**: `www/content/*.json` validated against `www/content/week.schema.json`
+- **Workflow**: Edit/create `www/content/YYYY-MM-DD.json` → `npm run deploy` (in www/)
 - **Build**: `npm run build` validates JSON, compiles Mustache templates to `www/dist/`
 - **Deploy**: `npm run deploy` builds and pushes `dist/` to gh-pages branch
 

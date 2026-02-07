@@ -1,0 +1,302 @@
+{
+  "meals": [
+    {
+      "day": "Monday",
+      "meal": "Crockpot Crack Chicken over Rice",
+      "style": "Crockpot"
+    },
+    {
+      "day": "Tuesday",
+      "meal": "Chicken Burrito Bowls",
+      "style": "Rice bowl / Mexican"
+    },
+    {
+      "day": "Wednesday",
+      "meal": "GF Fettuccine Alfredo with Garlic Butter Broccoli",
+      "style": "Pasta"
+    },
+    {
+      "day": "Thursday",
+      "meal": "Honey Garlic Salmon with Steamed Green Beans",
+      "style": "Pan sear"
+    },
+    {
+      "day": "Friday",
+      "meal": "Crockpot Chicken Tortilla Soup (corn chips)",
+      "style": "Crockpot / Mexican"
+    },
+    {
+      "day": "Saturday",
+      "meal": "Crockpot Salsa Verde Chicken Tacos (corn tortillas)",
+      "style": "Crockpot / Mexican"
+    },
+    {
+      "day": "Sunday",
+      "meal": "Teriyaki Chicken Rice Bowls",
+      "style": "Rice bowl"
+    }
+  ],
+  "recipes": [
+    {
+      "day": "Monday",
+      "name": "Crockpot Crack Chicken over Rice",
+      "ingredients": [
+        "1 lb boneless skinless chicken thighs",
+        "½ oz ranch seasoning (half packet)",
+        "8 oz cream cheese",
+        "4 slices bacon, cooked and chopped",
+        "¾ cup shredded cheddar",
+        "¼ cup sliced green onions",
+        "1 cup white rice"
+      ],
+      "instructions": "Slow cooker LOW 7 hrs. Shred, stir, top with cheddar, melt 10 min. Serve over rice."
+    },
+    {
+      "day": "Tuesday",
+      "name": "Chicken Burrito Bowls",
+      "ingredients": [
+        "1 lb chicken breast, diced",
+        "1 Tbsp olive oil, 1 tsp cumin, 1 tsp chili powder, ½ tsp garlic powder, salt & pepper",
+        "1 cup rice",
+        "1 can (15 oz) black beans, drained",
+        "½ cup corn (frozen or canned)",
+        "½ cup salsa, ¼ cup sour cream",
+        "Toppings: shredded cheese, avocado, cilantro"
+      ],
+      "instructions": "Season and sauté chicken 6–7 min. Serve over rice with beans, corn, and toppings."
+    },
+    {
+      "day": "Wednesday",
+      "name": "GF Fettuccine Alfredo with Broccoli",
+      "ingredients": [
+        "9 oz GF fettuccine",
+        "2 Tbsp butter, 1 cup heavy cream, 1 clove garlic minced",
+        "¾ cup grated Parmesan, salt & pepper",
+        "2 cups broccoli florets"
+      ],
+      "instructions": "Melt butter, sauté garlic 30 sec, add cream, simmer 3 min. Stir in Parmesan until smooth. Toss with cooked GF pasta. Steam or roast broccoli on the side."
+    },
+    {
+      "day": "Thursday",
+      "name": "Honey Garlic Salmon with Steamed Green Beans",
+      "ingredients": [
+        "3 salmon fillets (~5 oz each)",
+        "2 Tbsp honey, 1 Tbsp tamari/GF soy sauce, 1 tsp minced garlic, 1 Tbsp butter",
+        "12 oz green beans, salt & pepper"
+      ],
+      "instructions": "Sear salmon skin-side up 3 min, flip, add honey-garlic-tamari sauce, cook 3 more min basting. Steam green beans on the side."
+    },
+    {
+      "day": "Friday",
+      "name": "Crockpot Chicken Tortilla Soup",
+      "ingredients": [
+        "1 lb chicken breast",
+        "1 can (14 oz) diced tomatoes, 1 can (15 oz) black beans (drained), 1 cup corn",
+        "1 cup chicken broth, 1 tsp cumin, 1 tsp chili powder, ½ tsp garlic powder, salt",
+        "Toppings: corn tortilla chips, shredded cheese, sour cream, avocado, cilantro, lime"
+      ],
+      "instructions": "Place chicken, tomatoes, beans, corn, broth, and spices in slow cooker. Cook LOW 6–8 hrs. Shred chicken, stir. Serve with toppings."
+    },
+    {
+      "day": "Saturday",
+      "name": "Crockpot Salsa Verde Chicken Tacos",
+      "ingredients": [
+        "1 lb boneless skinless chicken breast",
+        "1 cup salsa verde",
+        "1 tsp cumin, ½ tsp garlic powder, salt",
+        "Corn tortillas (GF)",
+        "Toppings: diced onion, cilantro, lime, shredded cheese, sour cream"
+      ],
+      "instructions": "Place chicken in slow cooker, pour salsa verde, season. Cook LOW 6 hrs. Shred and serve in corn tortillas."
+    },
+    {
+      "day": "Sunday",
+      "name": "Teriyaki Chicken Rice Bowls",
+      "ingredients": [
+        "1 lb chicken thighs, sliced",
+        "Sauce: 3 Tbsp GF soy sauce/tamari, 1 Tbsp honey, 1 tsp sesame oil, 1 tsp rice vinegar, 1 tsp cornstarch + 1 Tbsp water",
+        "1 cup rice",
+        "1 cup steamed broccoli or snap peas"
+      ],
+      "instructions": "Sauté chicken 6 min, add sauce, cook until thickened. Serve over rice with veggies. Top with sesame seeds and green onion."
+    }
+  ],
+  "groceryList": {
+    "Proteins": [
+      {
+        "item": "1 lb chicken thighs (boneless skinless)",
+        "days": "Monday"
+      },
+      {
+        "item": "1 lb chicken breast",
+        "days": "Tuesday"
+      },
+      {
+        "item": "3 salmon fillets (~5 oz each)",
+        "days": "Thursday"
+      },
+      {
+        "item": "1 lb chicken breast",
+        "days": "Friday"
+      },
+      {
+        "item": "1 lb chicken breast",
+        "days": "Saturday"
+      },
+      {
+        "item": "1 lb chicken thighs",
+        "days": "Sunday"
+      },
+      {
+        "item": "8 slices bacon",
+        "days": "Monday"
+      }
+    ],
+    "Dairy": [
+      {
+        "item": "8 oz cream cheese",
+        "days": "Monday"
+      },
+      {
+        "item": "Heavy cream (1 cup)",
+        "days": "Wednesday"
+      },
+      {
+        "item": "Butter",
+        "days": "Wednesday, Thursday"
+      },
+      {
+        "item": "Shredded cheddar cheese (~2 cups total)",
+        "days": "Monday, Tuesday, Friday, Saturday"
+      },
+      {
+        "item": "Grated Parmesan (¾ cup)",
+        "days": "Wednesday"
+      },
+      {
+        "item": "Sour cream",
+        "days": "Tuesday, Friday, Saturday"
+      }
+    ],
+    "Produce": [
+      {
+        "item": "Green onions (1 bunch)",
+        "days": "Monday, Sunday"
+      },
+      {
+        "item": "2 avocados",
+        "days": "Tuesday, Friday"
+      },
+      {
+        "item": "Cilantro (1 bunch)",
+        "days": "Tuesday, Friday, Saturday"
+      },
+      {
+        "item": "12 oz green beans",
+        "days": "Thursday"
+      },
+      {
+        "item": "Broccoli (4 cups florets)",
+        "days": "Wednesday, Sunday"
+      },
+      {
+        "item": "Garlic (1 head)",
+        "days": "multiple days"
+      },
+      {
+        "item": "2 limes",
+        "days": "Friday, Saturday"
+      },
+      {
+        "item": "1 diced onion",
+        "days": "Saturday"
+      }
+    ],
+    "Pantry / Dry Goods": [
+      {
+        "item": "White rice (4+ cups dry)",
+        "days": "Monday, Tuesday, Sunday"
+      },
+      {
+        "item": "GF fettuccine (9 oz)",
+        "days": "Wednesday"
+      },
+      {
+        "item": "Corn tortillas",
+        "days": "Saturday"
+      },
+      {
+        "item": "Corn tortilla chips",
+        "days": "Friday"
+      },
+      {
+        "item": "2 cans (15 oz) black beans",
+        "days": "Tuesday, Friday"
+      },
+      {
+        "item": "1 can (14 oz) diced tomatoes",
+        "days": "Friday"
+      },
+      {
+        "item": "1 cup salsa",
+        "days": "Tuesday"
+      },
+      {
+        "item": "1 cup salsa verde",
+        "days": "Saturday"
+      },
+      {
+        "item": "1 cup chicken broth",
+        "days": "Friday"
+      },
+      {
+        "item": "½ cup corn (frozen or canned)",
+        "days": "Tuesday"
+      },
+      {
+        "item": "1 cup corn (frozen or canned)",
+        "days": "Friday"
+      },
+      {
+        "item": "Olive oil",
+        "days": ""
+      },
+      {
+        "item": "GF soy sauce or tamari",
+        "days": "Thursday, Sunday"
+      },
+      {
+        "item": "Honey",
+        "days": "Thursday, Sunday"
+      },
+      {
+        "item": "Sesame oil",
+        "days": "Sunday"
+      },
+      {
+        "item": "Rice vinegar",
+        "days": "Sunday"
+      },
+      {
+        "item": "Cornstarch",
+        "days": "Sunday"
+      },
+      {
+        "item": "Ranch seasoning mix (1 packet)",
+        "days": "Monday"
+      },
+      {
+        "item": "Cumin, chili powder, garlic powder, salt, pepper",
+        "days": ""
+      }
+    ],
+    "Optional / Check Stock": [
+      {
+        "item": "Sesame seeds",
+        "days": "Sunday"
+      }
+    ]
+  },
+  "startDate": "2026-02-02",
+  "endDate": "2026-02-08"
+}

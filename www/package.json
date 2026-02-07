@@ -7,7 +7,6 @@
   "scripts": {
     "validate": "node scripts/build.js --validate-only",
     "build": "node scripts/build.js",
-    "generate": "node scripts/generate-json.js",
     "deploy": "npm run build && gh-pages -d dist"
   },
   "dependencies": {

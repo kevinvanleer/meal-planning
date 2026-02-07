@@ -1,4 +1,2 @@
 node_modules/
 dist/
-content/*.json
-!content/week.schema.json
