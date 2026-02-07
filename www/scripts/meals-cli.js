@@ -177,7 +177,7 @@ Status tracking:
     const recipes = db.prepare(`
       SELECT r.id, r.name, MAX(m.date) as last_used
       FROM recipes r
-      LEFT JOIN meals m ON r.id = m.recipe_id
+      LEFT JOIN meals m ON r.id = m.recipe_id AND m.status != 'skipped'
       GROUP BY r.id
       HAVING last_used IS NULL OR last_used < ?
       ORDER BY last_used
@@ -203,6 +203,7 @@ Status tracking:
       SELECT r.name, COUNT(*) as times
       FROM meals m
       JOIN recipes r ON m.recipe_id = r.id
+      WHERE m.status != 'skipped'
       GROUP BY r.id
       ORDER BY times DESC
       LIMIT 5
