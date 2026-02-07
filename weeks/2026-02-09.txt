@@ -4,13 +4,13 @@ Week Meal Plan — Feb 9–15, 2026
 ├───────────┼───────────────────────────────────────────────────────┼─────────────────────┤
 │ Monday    │ Steak Fajita Rice Bowls                               │ Rice bowl / Mexican │
 ├───────────┼───────────────────────────────────────────────────────┼─────────────────────┤
-│ Tuesday   │ Crockpot Beef Stew (GF)                               │ Crockpot            │
+│ Tuesday   │ Chicken Burrito Bowls                                 │ Rice bowl / Mexican │
 ├───────────┼───────────────────────────────────────────────────────┼─────────────────────┤
 │ Wednesday │ Marinated Pork Tenderloin with Roasted Sweet Potato   │ Grilled             │
 ├───────────┼───────────────────────────────────────────────────────┼─────────────────────┤
 │ Thursday  │ Lemon Herb Chicken with Roasted Asparagus             │ Pan sear            │
 ├───────────┼───────────────────────────────────────────────────────┼─────────────────────┤
-│ Friday    │ Shrimp Tacos (corn tortillas)                         │ Mexican             │
+│ Friday    │ Teriyaki Chicken Rice Bowls                           │ Rice bowl           │
 ├───────────┼───────────────────────────────────────────────────────┼─────────────────────┤
 │ Saturday  │ Crockpot Italian Sausage & Peppers over Rice          │ Crockpot            │
 ├───────────┼───────────────────────────────────────────────────────┼─────────────────────┤
@@ -28,12 +28,15 @@ Monday — Steak Fajita Rice Bowls
 - Toppings: shredded cheese, sour cream, salsa, avocado, lime
 - Sear steak strips 2–3 min over high heat, remove. Sauté peppers and onions 5 min. Serve over rice with toppings.
 
-Tuesday — Crockpot Beef Stew (GF)
-- 1 lb beef stew meat, cubed
-- 3 medium potatoes, cubed; 2 carrots, sliced; 1 stalk celery, sliced; ½ onion, diced
-- 2 cups beef broth, 2 Tbsp tomato paste, 1 tsp Worcestershire (check GF), 1 tsp garlic powder, salt & pepper
-- 1 Tbsp cornstarch + 1 Tbsp water (to thicken at end)
-- Brown beef in skillet 3 min. Add everything to slow cooker. Cook LOW 8 hrs. Stir in cornstarch slurry, cook 10 min more.
+Tuesday — Chicken Burrito Bowls
+- 1 lb chicken breast, diced
+- 1 Tbsp olive oil, 1 tsp cumin, 1 tsp chili powder, ½ tsp garlic powder, salt & pepper
+- 1 cup rice
+- 1 can (15 oz) black beans, drained
+- ½ cup corn (frozen or canned)
+- ½ cup salsa, ¼ cup sour cream
+- Toppings: shredded cheese, avocado, cilantro
+- Season and sauté chicken 6–7 min. Serve over rice with beans, corn, and toppings.
 
 Wednesday — Marinated Pork Tenderloin with Roasted Sweet Potato
 - 1 lb pork tenderloin
@@ -47,13 +50,12 @@ Thursday — Lemon Herb Chicken with Roasted Asparagus
 - 1 bunch asparagus, trimmed, tossed with olive oil, salt, pepper
 - Marinate chicken 30 min. Sear in skillet 5–6 min per side. Roast asparagus at 400°F for 12 min.
 
-Friday — Shrimp Tacos (corn tortillas)
-- ¾ lb shrimp, peeled and deveined
-- 1 Tbsp olive oil, 1 tsp chili powder, ½ tsp cumin, ½ tsp garlic powder, salt
-- Corn tortillas (GF)
-- Slaw: 2 cups shredded cabbage, 2 Tbsp mayo, 1 Tbsp lime juice, pinch of salt
-- Toppings: avocado, cilantro, lime wedges, hot sauce
-- Sauté shrimp 2–3 min per side. Mix slaw. Serve in warmed corn tortillas with slaw and toppings.
+Friday — Teriyaki Chicken Rice Bowls
+- 1 lb chicken thighs, sliced
+- Sauce: 3 Tbsp GF soy sauce/tamari, 1 Tbsp honey, 1 tsp sesame oil, 1 tsp rice vinegar, 1 tsp cornstarch + 1 Tbsp water
+- 1 cup rice
+- 1 cup steamed broccoli or snap peas
+- Sauté chicken 6 min, add sauce, cook until thickened. Serve over rice with veggies. Top with sesame seeds and green onion.
 
 Saturday — Crockpot Italian Sausage & Peppers over Rice
 - 1 lb Italian sausage links (GF — check label)
@@ -74,52 +76,49 @@ Grocery List
 
 Proteins
 - ¾ lb flank or skirt steak — Monday
-- 1 lb beef stew meat — Tuesday
+- 1 lb chicken breast — Tuesday
 - 1 lb pork tenderloin — Wednesday
 - 1 lb boneless skinless chicken thighs — Thursday
-- ¾ lb shrimp (peeled, deveined) — Friday
+- 1 lb chicken thighs — Friday
 - 1 lb Italian sausage links (GF) — Saturday
 
 Dairy
-- Shredded cheese (~1 cup) — Monday
-- Sour cream — Monday
+- Shredded cheese (~1.5 cups) — Monday, Tuesday
+- Sour cream — Monday, Tuesday
 - Heavy cream (1 cup) — Sunday
 - Butter (3 Tbsp) — Sunday
 - Grated Parmesan (¾ cup) — Sunday
-- Mayo (2 Tbsp) — Friday
 
 Produce
 - 4 bell peppers — Monday, Saturday
-- 2 onions — Monday, Tuesday, Saturday
+- 1.5 onions — Monday, Saturday
 - 2 medium sweet potatoes — Wednesday
 - 1 bunch asparagus — Thursday
-- 2 cups shredded cabbage (or small bag coleslaw mix) — Friday
-- 2 cups broccoli florets — Sunday
-- 3 medium potatoes — Tuesday
-- 2 carrots — Tuesday
-- 1 stalk celery — Tuesday
-- 1 avocado — Monday, Friday
-- Cilantro (1 bunch) — Friday
-- 3 limes — Monday, Friday
+- 3 cups broccoli florets — Sunday, Friday
+- 1 avocado — Monday, Tuesday
+- Cilantro (1 bunch) — Tuesday
+- 2 limes — Monday
 - 2 lemons — Wednesday, Thursday
+- Green onions (1 bunch) — Friday
 - Garlic (1 head) — multiple days
 
 Pantry / Dry Goods
-- White rice (3+ cups dry) — Monday, Saturday
+- White rice (4+ cups dry) — Monday, Tuesday, Friday, Saturday
 - GF fettuccine (9 oz) — Sunday
-- Corn tortillas — Friday
+- 1 can (15 oz) black beans — Tuesday
+- ½ cup corn (frozen or canned) — Tuesday
 - 1 can (14 oz) diced tomatoes — Saturday
-- 2 cups beef broth — Tuesday
-- 2 Tbsp tomato paste — Tuesday
 - Olive oil
-- Tamari / GF soy sauce — Wednesday
+- Tamari / GF soy sauce — Wednesday, Friday
 - Brown sugar — Wednesday
 - Dijon mustard — Wednesday
-- Worcestershire sauce (GF) — Tuesday
-- Cornstarch — Tuesday
-- Salsa — Monday
+- Honey — Friday
+- Sesame oil — Friday
+- Rice vinegar — Friday
+- Cornstarch — Friday
+- Salsa — Monday, Tuesday
 - Italian seasoning — Saturday
 - Cumin, chili powder, garlic powder, oregano, parsley, thyme, salt, pepper
 
 Optional / Check Stock
-- Hot sauce — Friday
+- Sesame seeds — Friday

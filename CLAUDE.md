@@ -17,7 +17,9 @@
 - **Style**: Wholesome, easy to prepare
 - **Output**: Recipes + grocery lists
 - **Week starts Monday**: Plan runs Monday through Sunday
-- **No repeats**: Never repeat a recipe within the same week
+- **No repeats within week**: Never repeat a recipe within the same week
+- **No consecutive week repeats**: Never repeat a meal from the previous week
+- **Crockpot limit**: Maximum 2 crockpot meals per week
 - **Leftovers OK**: Eating leftover meals on off-nights is fine, but not the goal
 - **Portion control**: Prefer recipes scaled to exact servings needed (typically 3) to minimize leftovers
 
@@ -64,10 +66,10 @@
 | Day            | Meal                                              |
 |----------------|---------------------------------------------------|
 | Mon Feb 9      | Steak Fajita Rice Bowls                            |
-| Tue Feb 10     | Crockpot Beef Stew (GF)                            |
+| Tue Feb 10     | Chicken Burrito Bowls                              |
 | Wed Feb 11     | Marinated Pork Tenderloin with Roasted Sweet Potato|
 | Thu Feb 12     | Lemon Herb Chicken with Roasted Asparagus          |
-| Fri Feb 13     | Shrimp Tacos (corn tortillas)                      |
+| Fri Feb 13     | Teriyaki Chicken Rice Bowls                        |
 | Sat Feb 14     | Crockpot Italian Sausage & Peppers over Rice       |
 | Sun Feb 15     | GF Fettuccine Alfredo with Garlic Butter Broccoli  |
 
