@@ -51,27 +51,11 @@
 
 ## Meal History
 
-### Week of Feb 2–8, 2026
-| Day            | Meal                                              |
-|----------------|---------------------------------------------------|
-| Mon Feb 2      | Crockpot Crack Chicken over Rice                  |
-| Tue Feb 3      | Chicken Burrito Bowls                              |
-| Wed Feb 4      | GF Fettuccine Alfredo with Garlic Butter Broccoli  |
-| Thu Feb 5      | Honey Garlic Salmon with Steamed Green Beans       |
-| Fri Feb 6      | Crockpot Chicken Tortilla Soup (corn chips)        |
-| Sat Feb 7      | Crockpot Salsa Verde Chicken Tacos (corn tortillas)|
-| Sun Feb 8      | Teriyaki Chicken Rice Bowls                        |
+**Source of truth**: `weeks/*.txt` files (human-readable) and `www/content/*.json` (generated)
 
-### Week of Feb 9–15, 2026
-| Day            | Meal                                              |
-|----------------|---------------------------------------------------|
-| Mon Feb 9      | Steak Fajita Rice Bowls                            |
-| Tue Feb 10     | Chicken Burrito Bowls                              |
-| Wed Feb 11     | Marinated Pork Tenderloin with Roasted Sweet Potato|
-| Thu Feb 12     | Lemon Herb Chicken with Roasted Asparagus          |
-| Fri Feb 13     | Teriyaki Chicken Rice Bowls                        |
-| Sat Feb 14     | Crockpot Italian Sausage & Peppers over Rice       |
-| Sun Feb 15     | GF Fettuccine Alfredo with Garlic Butter Broccoli  |
+To check previous meals before planning a new week:
+- Read the most recent `weeks/YYYY-MM-DD.txt` file
+- Or read `www/content/YYYY-MM-DD.json` after running `npm run generate`
 
 ## Website (kevinvanleer.com/meal-planning)
 
