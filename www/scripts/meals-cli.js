@@ -197,6 +197,7 @@ Status tracking:
     const weekCount = db.prepare(`
       SELECT COUNT(DISTINCT date(date, 'weekday 0', '-6 days')) as c FROM meals
     `).get().c;
+    const plannedCount = db.prepare("SELECT COUNT(*) as c FROM meals WHERE status = 'planned'").get().c;
     const madeCount = db.prepare("SELECT COUNT(*) as c FROM meals WHERE status = 'made'").get().c;
     const deferredCount = db.prepare("SELECT COUNT(*) as c FROM meals WHERE status = 'deferred'").get().c;
 
@@ -215,6 +216,7 @@ Status tracking:
     console.log(`  Meals: ${mealCount}`);
     console.log(`  Weeks: ${weekCount}`);
     console.log(`  Grocery items: ${groceryCount}`);
+    console.log(`  Planned: ${plannedCount}`);
     console.log(`  Made: ${madeCount}`);
     console.log(`  Deferred: ${deferredCount}`);
     console.log('\nMost used recipes:');
