@@ -18,7 +18,28 @@
     if (!recipe) return;
 
     var detailContent = document.getElementById('recipe-detail-content');
-    detailContent.innerHTML = recipe.outerHTML;
+    var name = recipe.querySelector('h3').textContent;
+    var ingredients = recipe.querySelector('ul').outerHTML;
+    var prepSteps = recipe.querySelector('.prep-steps');
+    var tips = recipe.querySelector('.tips');
+
+    var html = '<article class="recipe-detail">';
+    html += '<h3>' + name + '</h3>';
+    html += '<h4>Ingredients</h4>' + ingredients;
+
+    if (prepSteps) {
+      html += '<h4>Prep Steps</h4>' + prepSteps.innerHTML;
+    } else {
+      var instructions = recipe.querySelector('.instructions').textContent;
+      html += '<h4>Instructions</h4><p class="instructions">' + instructions + '</p>';
+    }
+
+    if (tips) {
+      html += '<h4>Tips</h4>' + tips.innerHTML;
+    }
+
+    html += '</article>';
+    detailContent.innerHTML = html;
     document.getElementById('tab-recipe-detail').checked = true;
 
     requestWakeLock();

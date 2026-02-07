@@ -196,6 +196,43 @@ header h1 {
   padding-bottom: 0;
 }
 
+.recipe-detail h3 {
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+  color: var(--color-accent);
+}
+
+.recipe-detail h4 {
+  font-size: 0.9rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--color-text-muted);
+  margin-top: 1.25rem;
+  margin-bottom: 0.5rem;
+}
+
+.recipe-detail h4:first-of-type {
+  margin-top: 0;
+}
+
+.recipe-detail ul,
+.recipe-detail ol {
+  margin-left: 1.25rem;
+  margin-bottom: 0.5rem;
+}
+
+.recipe-detail li {
+  margin-bottom: 0.4rem;
+  font-size: 0.9rem;
+  line-height: 1.5;
+}
+
+.recipe-detail ol li {
+  margin-bottom: 0.75rem;
+}
+
 /* Recipes */
 .recipe {
   margin-bottom: 1.75rem;
