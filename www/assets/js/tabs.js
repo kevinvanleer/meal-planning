@@ -2,14 +2,26 @@
   var tabs = { meals: 'tab-meals', recipes: 'tab-recipes', grocery: 'tab-grocery' };
   var wakeLock = null;
 
+  function updateHeaderNav(isRecipeDetail) {
+    var archiveLink = document.getElementById('back-to-archive');
+    var mealsLink = document.getElementById('back-to-meals');
+    if (archiveLink && mealsLink) {
+      archiveLink.hidden = isRecipeDetail;
+      mealsLink.hidden = !isRecipeDetail;
+    }
+  }
+
   function activateFromHash() {
     var hash = location.hash.slice(1);
     var id = tabs[hash];
     if (id) {
       document.getElementById(id).checked = true;
+      updateHeaderNav(false);
       releaseWakeLock();
     } else if (hash.startsWith('recipe-')) {
       showRecipeDetail(hash);
+    } else {
+      updateHeaderNav(false);
     }
   }
 
@@ -41,6 +53,7 @@
     html += '</article>';
     detailContent.innerHTML = html;
     document.getElementById('tab-recipe-detail').checked = true;
+    updateHeaderNav(true);
 
     requestWakeLock();
   }
@@ -79,12 +92,6 @@
     if (row) {
       var day = row.getAttribute('data-day');
       location.hash = 'recipe-' + day;
-      return;
-    }
-
-    var backBtn = e.target.closest('#back-to-meals');
-    if (backBtn) {
-      location.hash = 'meals';
       return;
     }
 

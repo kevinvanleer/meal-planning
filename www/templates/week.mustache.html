@@ -8,7 +8,8 @@
 </head>
 <body>
   <header>
-    <a href="../../archive/" class="back-link">&larr; Archive</a>
+    <a href="../../archive/" class="back-link" id="back-to-archive">&larr; Archive</a>
+    <a href="#meals" class="back-link" id="back-to-meals" hidden>&larr; Back to Meals</a>
     <h1 class="date-range">{{dateRange}}</h1>
   </header>
   <main>
@@ -89,7 +90,6 @@
       </section>
 
       <section class="tab-panel" id="panel-recipe-detail">
-        <button class="back-to-meals" id="back-to-meals">&larr; Back to Meals</button>
         <div id="recipe-detail-content"></div>
       </section>
     </div>

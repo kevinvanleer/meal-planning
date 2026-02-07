@@ -49,6 +49,10 @@ header h1 {
   margin-bottom: 0.5rem;
 }
 
+.back-link[hidden] {
+  display: none;
+}
+
 .back-link:hover {
   text-decoration: underline;
 }
