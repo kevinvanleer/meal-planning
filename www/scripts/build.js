@@ -1,5 +1,6 @@
 const fs = require('fs');
 const path = require('path');
+const crypto = require('crypto');
 const Mustache = require('mustache');
 const Database = require('better-sqlite3');
 
@@ -101,6 +102,11 @@ function copyDirSync(src, dest) {
   }
 }
 
+function getFileHash(filePath) {
+  const content = fs.readFileSync(filePath);
+  return crypto.createHash('md5').update(content).digest('hex').slice(0, 8);
+}
+
 // Build
 fs.rmSync(DIST_DIR, { recursive: true, force: true });
 fs.mkdirSync(DIST_DIR, { recursive: true });
@@ -108,6 +114,10 @@ fs.mkdirSync(DIST_DIR, { recursive: true });
 const indexTemplate = fs.readFileSync(path.join(TEMPLATES_DIR, 'index.mustache.html'), 'utf8');
 const archiveTemplate = fs.readFileSync(path.join(TEMPLATES_DIR, 'archive.mustache.html'), 'utf8');
 const weekTemplate = fs.readFileSync(path.join(TEMPLATES_DIR, 'week.mustache.html'), 'utf8');
+
+// Compute asset hashes for cache busting
+const cssHash = getFileHash(path.join(ASSETS_DIR, 'css', 'main.css'));
+const jsHash = getFileHash(path.join(ASSETS_DIR, 'js', 'tabs.js'));
 
 const weeks = getWeeks.all();
 const weeksData = [];
@@ -166,21 +176,21 @@ for (const week of weeks) {
   // Build week page
   const weekDir = path.join(DIST_DIR, 'week', week.week_start);
   fs.mkdirSync(weekDir, { recursive: true });
-  const weekHtml = Mustache.render(weekTemplate, weekData);
+  const weekHtml = Mustache.render(weekTemplate, { ...weekData, cssHash, jsHash });
   fs.writeFileSync(path.join(weekDir, 'index.html'), weekHtml);
   console.log(`Built dist/week/${week.week_start}/index.html`);
 }
 
 // Build index page (redirect to current week)
 const weeksJson = JSON.stringify(weeksData.map(w => w.startDate));
-const indexHtml = Mustache.render(indexTemplate, { weeks: weeksData, weeksJson });
+const indexHtml = Mustache.render(indexTemplate, { weeks: weeksData, weeksJson, cssHash });
 fs.writeFileSync(path.join(DIST_DIR, 'index.html'), indexHtml);
 console.log('Built dist/index.html');
 
 // Build archive page
 const archiveDir = path.join(DIST_DIR, 'archive');
 fs.mkdirSync(archiveDir, { recursive: true });
-const archiveHtml = Mustache.render(archiveTemplate, { weeks: weeksData });
+const archiveHtml = Mustache.render(archiveTemplate, { weeks: weeksData, cssHash });
 fs.writeFileSync(path.join(archiveDir, 'index.html'), archiveHtml);
 console.log('Built dist/archive/index.html');
 
