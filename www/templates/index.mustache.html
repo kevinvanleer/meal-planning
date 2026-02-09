@@ -3,8 +3,14 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#4a7c59">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
   <title>Meal Plans — Van Leer Family</title>
   <link rel="stylesheet" href="assets/css/main.css?v={{cssHash}}">
+  <link rel="manifest" href="assets/manifest.json">
+  <link rel="icon" href="assets/icons/icon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="assets/icons/icon.svg">
   <script>
     (function() {
       var weeks = {{{weeksJson}}};
@@ -31,5 +37,10 @@
   <main>
     <p>If you are not redirected, <a href="archive/">view all weeks</a>.</p>
   </main>
+  <script>
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.register('assets/sw.js');
+    }
+  </script>
 </body>
 </html>
