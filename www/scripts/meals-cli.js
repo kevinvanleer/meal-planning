@@ -100,8 +100,8 @@ Status tracking:
         console.log(`\nWeek of ${weekStart}:`);
       }
       const day = getDayName(m.date);
-      const status = m.status ? ` [${m.status}]` : '';
-      console.log(`  ${day.padEnd(9)} ${m.date}  ${m.name}${status}`);
+      const status = (m.status || '').padEnd(8);
+      console.log(`  ${day.padEnd(9)} ${m.date}  ${status}  ${m.name}`);
     }
   },
 
