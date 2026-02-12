@@ -84,7 +84,7 @@ Status tracking:
 
   meals: (weeks = 2) => {
     const meals = db.prepare(`
-      SELECT m.date, r.name, r.style
+      SELECT m.date, m.status, r.name, r.style
       FROM meals m
       JOIN recipes r ON m.recipe_id = r.id
       ORDER BY m.date DESC
@@ -100,7 +100,8 @@ Status tracking:
         console.log(`\nWeek of ${weekStart}:`);
       }
       const day = getDayName(m.date);
-      console.log(`  ${day.padEnd(9)} ${m.date}  ${m.name}`);
+      const status = m.status ? ` [${m.status}]` : '';
+      console.log(`  ${day.padEnd(9)} ${m.date}  ${m.name}${status}`);
     }
   },
 
