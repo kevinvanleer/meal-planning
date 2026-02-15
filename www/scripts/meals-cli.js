@@ -17,6 +17,7 @@ Commands:
   recipe <id>                Show recipe details
   meals [weeks]              List recent meals (default: 2 weeks)
   week <YYYY-MM-DD>          Show meals for a specific week (use Monday date)
+  add-recipe <json-file>     Add a recipe from a JSON file
   add-meal <date> <recipe>   Add a meal (date: YYYY-MM-DD, recipe: id or name)
   search <term>              Search recipes by name
   unused [weeks]             Show recipes not used in recent weeks
@@ -150,6 +151,38 @@ Status tracking:
         throw e;
       }
     }
+  },
+
+  'add-recipe': (jsonFile) => {
+    if (!jsonFile) {
+      console.log('Usage: add-recipe <json-file>');
+      console.log('\nJSON format:');
+      console.log('  { "name": "...", "style": "...", "ingredients": [...],');
+      console.log('    "instructions": "...", "prep_steps": [...], "tips": [...] }');
+      return;
+    }
+
+    const data = JSON.parse(fs.readFileSync(jsonFile, 'utf-8'));
+    const { name, style, ingredients, instructions, prep_steps, tips } = data;
+
+    if (!name || !ingredients || !instructions) {
+      console.log('Required fields: name, ingredients, instructions');
+      return;
+    }
+
+    const result = db.prepare(`
+      INSERT INTO recipes (name, style, ingredients, instructions, prep_steps, tips)
+      VALUES (?, ?, ?, ?, ?, ?)
+    `).run(
+      name,
+      style || null,
+      JSON.stringify(ingredients),
+      instructions,
+      prep_steps ? JSON.stringify(prep_steps) : null,
+      tips ? JSON.stringify(tips) : null
+    );
+
+    console.log(`Added recipe #${result.lastInsertRowid}: ${name}`);
   },
 
   search: (term) => {
