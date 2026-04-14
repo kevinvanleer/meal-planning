@@ -212,6 +212,7 @@ Status tracking:
       SELECT r.id, r.name, MAX(m.date) as last_used
       FROM recipes r
       LEFT JOIN meals m ON r.id = m.recipe_id AND m.status != 'deferred'
+      WHERE r.active = 1
       GROUP BY r.id
       HAVING last_used IS NULL OR last_used < ?
       ORDER BY last_used
