@@ -27,12 +27,16 @@ Status tracking:
   defer <date>               Mark a meal as deferred
   made <date>                Mark a meal as made
   deferred                   Show deferred meals
+
+Rating:
+  rate <recipe-id> <1-5>     Rate a recipe
+  ratings                    Show all rated recipes
 `);
   },
 
   recipes: () => {
     const recipes = db.prepare(`
-      SELECT r.id, r.name, r.style, COUNT(m.id) as times_used,
+      SELECT r.id, r.name, r.style, r.rating, COUNT(m.id) as times_used,
              MAX(m.date) as last_used
       FROM recipes r
       LEFT JOIN meals m ON r.id = m.recipe_id
@@ -42,8 +46,9 @@ Status tracking:
 
     console.log('\nRecipes:\n');
     for (const r of recipes) {
-      const used = r.times_used > 0 ? `(used ${r.times_used}x, last: ${r.last_used})` : '(never used)';
-      console.log(`  ${r.id.toString().padStart(2)}. ${r.name} ${used}`);
+      const used = r.times_used > 0 ? `used ${r.times_used}x, last: ${r.last_used}` : 'never used';
+      const stars = r.rating ? ' ' + '★'.repeat(r.rating) + '☆'.repeat(5 - r.rating) : '';
+      console.log(`  ${r.id.toString().padStart(2)}. ${r.name}${stars} (${used})`);
     }
     console.log(`\nTotal: ${recipes.length} recipes`);
   },
@@ -57,6 +62,7 @@ Status tracking:
 
     console.log(`\n${recipe.name}`);
     console.log(`Style: ${recipe.style || 'N/A'}`);
+    if (recipe.rating) console.log(`Rating: ${'★'.repeat(recipe.rating)}${'☆'.repeat(5 - recipe.rating)}`);
     console.log('\nIngredients:');
     for (const ing of JSON.parse(recipe.ingredients)) {
       console.log(`  - ${ing}`);
@@ -298,6 +304,39 @@ Status tracking:
 
     db.prepare("UPDATE meals SET status = 'made' WHERE id = ?").run(meal.id);
     console.log(`Marked as made: ${meal.date} - ${meal.name}`);
+  },
+
+  rate: (recipeId, rating) => {
+    rating = parseInt(rating);
+    if (!recipeId || !rating || rating < 1 || rating > 5) {
+      console.log('Usage: rate <recipe-id> <1-5>');
+      return;
+    }
+    const recipe = db.prepare('SELECT * FROM recipes WHERE id = ?').get(recipeId);
+    if (!recipe) {
+      console.log('Recipe not found');
+      return;
+    }
+    db.prepare('UPDATE recipes SET rating = ? WHERE id = ?').run(rating, recipeId);
+    console.log(`\nRated "${recipe.name}" ${'★'.repeat(rating)}${'☆'.repeat(5 - rating)}`);
+  },
+
+  ratings: () => {
+    const recipes = db.prepare(`
+      SELECT id, name, rating FROM recipes
+      WHERE rating IS NOT NULL
+      ORDER BY rating DESC, name
+    `).all();
+
+    if (recipes.length === 0) {
+      console.log('\nNo rated recipes yet.');
+      return;
+    }
+
+    console.log('\nRated recipes:\n');
+    for (const r of recipes) {
+      console.log(`  ${r.id.toString().padStart(2)}. ${r.name} ${'★'.repeat(r.rating)}${'☆'.repeat(5 - r.rating)}`);
+    }
   },
 
   deferred: () => {
